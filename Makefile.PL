@@ -12,6 +12,7 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "provide a version number by bumping the last SVN release tag",
   "AUTHOR" => "Markus Benning <me\@w3r3wolf.de>",
   "BUILD_REQUIRES" => {
+    "SVN::Client" => 0,
     "Test::More" => 0
   },
   "CONFIGURE_REQUIRES" => {
@@ -35,7 +36,7 @@ my %WriteMakefileArgs = (
     "version" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.001",
+  "VERSION" => "1.002",
   "test" => {
     "TESTS" => "t/*.t"
   }
