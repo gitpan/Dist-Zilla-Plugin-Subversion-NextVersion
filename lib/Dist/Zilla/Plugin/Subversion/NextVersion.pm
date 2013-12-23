@@ -71,20 +71,21 @@ has 'next_version' => (
 	is => 'ro', isa => 'Str', lazy => 1,
 	default => sub {
 		my $self = shift;
-		return( Version::Next::next_version($self->max_version) );
+		return( Version::Next::next_version($self->max_version->stringify) );
 	},
 );
 
 sub provide_version {
 	my ($self) = @_;
-	my $max_version = $self->max_version;
-	my $next_version = $self->next_version;
 
 	# override (or maybe needed to initialize)
 	if( exists $ENV{V} ) {
 		$self->log("using version ".$ENV{V}.' from environment');
 		return $ENV{V};
 	}
+
+	my $max_version = $self->max_version;
+	my $next_version = $self->next_version;
 
 	$self->log("bumping version from $max_version to $next_version");
 
